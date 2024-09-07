@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "1066765745123",
+    "project_id": "fitfat-36f6f",
+    "storage_bucket": "fitfat-36f6f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1066765745123:android:a0e20d41c639d2bc407ed6",
+        "android_client_info": {
+          "package_name": "com.example.fitfat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1066765745123-1vv45l21c9ua1r0l1ln6dmi731vqa1qn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.fitfat",
+            "certificate_hash": "bfdfb40397c3ca5cb316318cf2ec282bbdeabf17"
+          }
+        },
+        {
+          "client_id": "1066765745123-35eo5q902nu6o8nvb4g8gg7ru99ko1rd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.fitfat",
+            "certificate_hash": "d311040a24dea1305719a7be4fb705e25ab02ce0"
+          }
+        },
+        {
+          "client_id": "1066765745123-gcpo7bl3196h8lsnt6nbibea9pif9h1j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAu_RTd-98brBVQUpcC0tLJx_j_z0Tuoc0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1066765745123-gcpo7bl3196h8lsnt6nbibea9pif9h1j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

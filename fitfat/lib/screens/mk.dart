@@ -1,0 +1,92 @@
+import 'package:chewie/chewie.dart';
+import 'package:fitfat/screens/yoga.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_launcher_icons/xml_templates.dart';
+import 'package:get/get.dart';
+import 'package:provider/provider.dart';
+import 'package:video_player/video_player.dart';
+
+class VideoPlayer extends StatefulWidget {
+  final VideoPlayerController videoPlayerController;
+  final bool isloop;
+  bool isFinished = false;
+  VideoPlayer({required this.isloop, required this.videoPlayerController});
+
+  @override
+  _VideoPlayerState createState() => _VideoPlayerState();
+}
+
+class _VideoPlayerState extends State<VideoPlayer> {
+  late ChewieController chewieController;
+  @override
+  void initState() {
+    chewieController = ChewieController(
+        //looping: widget.isloop,
+        aspectRatio: 16 / 9,
+        allowMuting: true,
+        autoPlay: true,
+        //fullScreenByDefault: true,
+        autoInitialize: true,
+        videoPlayerController: widget.videoPlayerController);
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+    ]);
+    // IMPORTANT to dispose of all the used resources
+    widget.videoPlayerController.dispose();
+    chewieController.dispose();
+    chewieController.pause();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Chewie(
+        controller: chewieController,
+      ),
+    );
+  }
+}
+
+class VideoDisplay extends StatefulWidget {
+  VideoDisplay();
+
+  @override
+  _VideoDisplayState createState() => _VideoDisplayState();
+}
+
+class _VideoDisplayState extends State<VideoDisplay> {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        backgroundColor: Colors.black,
+        appBar: AppBar(
+          backgroundColor: Colors.black,
+          leading: BackButton(
+            onPressed: () {
+              dispose();
+              Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (context) => YOGA()));
+            },
+            color: Colors.white, // <-- SEE HERE
+          ),
+          centerTitle: true,
+        ),
+        body: VideoPlayer(
+          isloop: false,
+          videoPlayerController: VideoPlayerController.network(
+              'https://firebasestorage.googleapis.com/v0/b/fitfat-36f6f.appspot.com/o/WorkoutVideos%2Fchildpose.mp4?alt=media&token=4301eecf-0cfc-44f2-90c7-18fcde3db302'),
+        ),
+      ),
+      debugShowCheckedModeBanner: false,
+    );
+  }
+}
